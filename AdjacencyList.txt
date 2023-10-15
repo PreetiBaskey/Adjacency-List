@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+const int V = 6;
+
+void addEdge(vector<int> adj[], int source, int destination) {
+    adj[source].push_back(destination);
+    adj[destination].push_back(source);
+}
+
+void printAdj(vector<int> adj[]) {
+    cout<<"Adjacency list is :- "<<endl;
+    for(int source = 0; source < V; source++) {
+        cout<<"Number of neighbours of "<<source<<" is :- "<<adj[source].size()<<endl;
+        for(int neighbour: adj[source]) {
+            cout<<"There is an edge between "<<source<<" and "<<neighbour<<endl;
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+int main() {
+    
+    vector<int> adj[V];
+    
+    addEdge(adj, 0, 1);
+    addEdge(adj, 1, 2);
+    addEdge(adj, 1, 5);
+    addEdge(adj, 0, 5);
+    addEdge(adj, 3, 5);
+    addEdge(adj, 3, 4);
+    addEdge(adj, 2, 4);
+    
+    printAdj(adj);
+    
+    return 0;
+}
